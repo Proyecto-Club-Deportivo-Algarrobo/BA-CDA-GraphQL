@@ -86,8 +86,8 @@ const resolvers = {
         },
 
         actualizarUsuario: async (_, {input}) => {
-            let { rut,average } = input;
-            const existeUsuario = await User.findOneAndUpdate({ rut }, { average: average });
+            let { rut,password } = input;
+            const existeUsuario = await User.findOneAndUpdate({ rut }, { password: password });
             if (!existeUsuario) {
                 throw new Error('El usuario no existe');
             }
