@@ -1,0 +1,43 @@
+[{
+    "id":"1",
+    "categoria":"Cancha de tenis",
+    "valorHora" : {
+        "singles": "14000",
+        "dobles": "24000"
+    },
+
+    "horario" : {
+        "tamaño_bloque":"1:00",
+        "dias": {
+            "lunes":{ "cantidad_bloques":"11" , "inicio":"10:00", "no_disponible":["3","4","5","6"] },
+            "martes":{ "cantidad_bloques":"11","inicio":"10:00", "no_disponible":["3","4","5","6"] },
+            "miercoles":{ "cantidad_bloques":"11","inicio":"10:00", "no_disponible":["3","4","5","6"] },
+            "jueves":{ "cantidad_bloques":"11","inicio":"10:00", "no_disponible":["3","4","5","6"] },
+            "viernes":{ "cantidad_bloques":"11","inicio":"10:00", "no_disponible":["3","4","5","6"] },
+            "sabado":{ "cantidad_bloques":"11","inicio":"10:00" },
+            "domingo":{ "cantidad_bloques":"11","inicio":"10:00" }
+        }
+    }
+},
+
+{
+    "id":"2",
+    "categoria":"Cancha de futbol tierra",
+    "valorHora": {
+        "noSociosDiurno": "30500",
+        "noSociosNocturno": "43000",
+        "estudiantesNoSocios": "19000"
+    },
+    "horario" : {
+        "tamaño_bloque":"1:30",
+        "dias": {
+            "lunes":{ "cantidad_bloques":"7","inicio":"10:00" , "no_disponible":["4"] },
+            "martes":{ "cantidad_bloques":"7","inicio":"10:00", "no_disponible":["4"] },
+            "miercoles":{ "cantidad_bloques":"7","inicio":"10:00", "no_disponible":["4"] },
+            "jueves":{ "cantidad_bloques":"7","inicio":"10:00", "no_disponible":["4"] },
+            "viernes":{ "cantidad_bloques":"7","inicio":"10:00", "no_disponible":["4"] },
+            "sabado":{ "cantidad_bloques":"4","inicio":"10:00" },
+            "domingo":{ "cantidad_bloques":"4","inicio":"10:00" }
+        }
+    }
+}]

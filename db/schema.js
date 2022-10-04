@@ -7,64 +7,105 @@ const typeDefs = gql`
         name: String,
         password: String,
         type: String,
-        average: Float,
-    },
-    type Message {
-        rut_from: String,
-        rut_to: String,
-        content: String,
-        created: String,
-    },
-    input MessageInput {
-        rut_from: String,
-        rut_to: String,
-        content: String,
-        created: String,
     },
     input UsuarioInput {
         rut: String!,
         name: String,
         password: String,
-        type: String,
-        average: Float
-        
+        type: String
     },
     input AutenticarInput {
         rut: String!,
         password: String!,
     },
-    input RegistroInput {
-        medicion: Float,
-        unidad_de_medida: String,
-        fecha_creacion: String,
-        user: String!
-    },
     type Token {
-        token: String
+        token: String!
     },
-    type Registro {
-        medicion: Float,
-        unidad_de_medida: String
-        fecha_creacion: String
-        user: String
+    type BloquesNoDisponibles {
+        id: String!
     },
-    type Query {
-        obtenerUsuarios: [User]
-        obtenerRegistros: [Registro]
+    input BloquesNoDisponiblesInput {
+        id: String!
     },
+    type BloquesAsignados {
+        id: String!
+    },
+    input BloquesAsignadosInput {
+        id: String!
+    },
+    type crearDia {
+        cantidad_bloques: Int!,
+        inicio: String!,
+        no_disponible: [BloquesNoDisponibles]
+    },
+    input crearDiaInput {
+        cantidad_bloques: Int!,
+        inicio: String!,
+        no_disponible: [BloquesNoDisponiblesInput]
+    },
+    type Dias {
+        lunes: [crearDia],
+        martes: [crearDia],
+        miercoles: [crearDia],
+        jueves: [crearDia],
+        viernes: [crearDia],
+        sabado: [crearDia],
+        domingo: [crearDia]
+    },
+    input DiasInput {
+        lunes: [crearDiaInput],
+        martes: [crearDiaInput],
+        miercoles: [crearDiaInput],
+        jueves: [crearDiaInput],
+        viernes: [crearDiaInput],
+        sabado: [crearDiaInput],
+        domingo: [crearDiaInput]
+    },
+    
+    type Horario {
+        tamano_bloque: String!,
+        dias: [Dias!]
+    },
+    input HorarioInput {
+        tamano_bloque: String!,
+        dias: [DiasInput!]
+    },
+    type ValorHora {
+        tipoValor: String!,
+        valor: Int!
+    },
+    input ValorHoraInput {
+        tipoValor: String!,
+        valor: Int!
+    },
+    type InstalacionHora {
+        id: ID,
+        categoria: String,
+        valorHora: [ValorHora],
+        horario: [Horario]
+    },
+    
+    input InstalacionHoraInput {
+        id: String!,
+        categoria: String!,
+        valorHora: [ValorHoraInput!],
+        horario: [HorarioInput!]
+    },
+    
     type Query {
         obtenerUser(token: String!): User
         obtenerUser_ByRut(rut: String!): User
-        obtenerRegistros_ByUserRut(rut: String!): [Registro]
         obtenerUsers: [User]
-        obtenerMensajes(rut_from: String!) : [Message]
+        obtenerInstalacionesHora: [InstalacionHora]
+        obtenerInstalacionesHora_ByCategoria(categoria: String!): InstalacionHora
+        obtenerInstalacionesHora_ById(id: String!): InstalacionHora
     },
     type Mutation {
-        crearMensaje(input: MessageInput): Message
         crearUsuario(input: UsuarioInput): User
         autenticarUsuario(input: AutenticarInput): Token
-        crearRegistro(input: RegistroInput): Registro
         actualizarUsuario(input: UsuarioInput): User
+        crearInstalacionHora(input: InstalacionHoraInput): InstalacionHora
+        modificarInstalacionHora(input: InstalacionHoraInput): InstalacionHora
     }
 
     `;
